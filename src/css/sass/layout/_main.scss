@@ -1,0 +1,280 @@
+.wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: $mobileWrapper;
+  max-width: $tabletWrapper;
+  margin: 0 auto;
+  padding: 50px 20px;
+
+  @media screen and (max-width: 400px) {
+    padding: 0 0;
+  }
+}
+
+.controlBlock {
+  position: relative;
+
+  box-sizing: border-box;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 20px;
+  overflow: auto;
+
+  background-color: rgba(128, 128, 128, 0.5);
+  border: 2px solid white;
+  border-radius: 10px;
+
+  @media screen and (max-width: 400px) {
+    padding: 5px;
+  }
+}
+.btnControls {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  margin-right: 5px;
+  padding: 0;
+
+  color: white;
+
+  background-color: grey;
+  border: 0;
+  border-radius: 5px;
+
+  &.active {
+    color: black;
+
+    background-color: white;
+  }
+
+  &:hover {
+    color: black;
+
+    background-color: white;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.btnRefresh,
+.btnLangBe {
+  margin-right: 30px;
+}
+
+.btnRefresh .material-icons {
+  position: relative;
+  top: 6px;
+
+  line-height: 0;
+}
+
+.btnChangeTemp {
+  @media screen and (max-width: 550px) {
+    margin-top: 20px;
+  }
+}
+.btnTempF {
+  @media screen and (max-width: 550px) {
+    margin-top: 20px;
+  }
+}
+
+.clear-typeTemp {
+  display: none;
+
+  @media screen and (max-width: 550px) {
+    display: block;
+  }
+}
+
+.search-town-block {
+  float: right;
+  min-width: 400px;
+  margin-top: 0;
+
+  @media screen and (max-width: 870px) {
+    float: left;
+    min-width: auto;
+    margin-top: 20px;
+  }
+}
+
+.clear-menu {
+  display: none;
+
+  @media screen and (max-width: 870px) {
+    display: block;
+  }
+}
+
+.inputNameTown {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  padding: 5px;
+
+  font-size: 24px;
+
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  @media screen and (max-width: 480px) {
+    width: 120px;
+    height: 35px;
+
+    font-size: 18px;
+  }
+}
+.inputNameTown,
+.btnVoice,
+.btnSendTownName {
+  float: right;
+  margin-right: 10px;
+}
+.btnSendTownName .material-icons {
+  font-size: 42px;
+  @media screen and (max-width: 480px) {
+    font-size: 36px;
+  }
+}
+
+.weatherTodayBlock {
+  float: left;
+  width: 55%;
+
+  @extend .controlBlock;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+
+  & .weatherTodayTitle {
+    margin-bottom: 5px;
+
+    font-size: 36px;
+    color: white;
+
+    @media screen and (max-width: 480px) {
+      font-size: 24px;
+    }
+  }
+
+  & .dateTodayTime {
+    font-size: 24px;
+    color: white;
+
+    @media screen and (max-width: 480px) {
+      font-size: 18px;
+    }
+  }
+
+  & .currTemperature {
+    margin: 30px;
+
+    font-size: 72px;
+    color: white;
+
+    @media screen and (max-width: 550px) {
+      margin-top: 50px;
+    }
+  }
+
+  & .currWeatherIcon {
+    font-size: 108px;
+    color: white;
+
+    @media screen and (max-width: 550px) {
+      margin-top: 50px;
+    }
+  }
+
+  & .weatherTodayDetails {
+    float: right;
+    width: 40%;
+    margin-top: 30px;
+
+    font-size: 18px;
+    color: white;
+
+    @media screen and (max-width: 550px) {
+      float: none;
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    & .weatherTodayDetails__title {
+      font-size: 24px;
+    }
+  }
+}
+.weatherNextThreeDays {
+  display: grid;
+  width: 100%;
+  margin: 50px 0 0;
+
+  @extend .controlBlock;
+  grid-template-columns: repeat(3, 1fr);
+
+  & .nextWeatherWeekDayBlock {
+    text-align: center;
+  }
+
+  & .nextWeatherWeekDay {
+    margin-bottom: 10px;
+
+    font-size: 24px;
+    text-align: center;
+    color: white;
+
+    @media screen and (max-width: 480px) {
+      font-size: 18px;
+    }
+  }
+
+  & .nextTemperature {
+    position: relative;
+    left: 10px;
+
+    font-size: 24px;
+    color: white;
+  }
+
+  & .nextWeatherIcon {
+    position: relative;
+    left: 10px;
+
+    font-size: 36px;
+    color: white;
+  }
+}
+.map {
+  float: right;
+  width: 40%;
+  height: 400px;
+  margin-bottom: 10px;
+  padding: 0;
+
+  @extend .controlBlock;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+}
+.mapCoordsBlock {
+  float: right;
+  width: 40%;
+
+  font-size: 18px;
+  text-align: right;
+  color: white;
+
+  @extend .controlBlock;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+}

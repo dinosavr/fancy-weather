@@ -1,0 +1,27 @@
+html {
+  font-size: $font-size-html; /* font-size 1em = (62.5/100) * 16px = 10px*/
+  height: 100%;
+}
+
+body{
+  font-size: $font-size;
+  font-family: $font-family;
+  box-sizing: border-box;
+  min-width: $mobileWrapper;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: hsla(0,0%,50.2%,.5);
+}
+.clear {
+  clear: both;
+  overflow: hidden;
+}
+.hidden{
+  display: none;
+}
+.error{
+  color: red;        
+}
