@@ -9,9 +9,6 @@ function getWeatherGo() {
   getWeatherFiveDays(`${urlWeatherFiveDaysShort}&q=${encodeURIComponent(infoUpdate.cityNameLat)}&lang=${info.currentLang}}`)
     .then((dataWeather) => {
 
-      // console.log(info.searchNameCity);
-      // console.log(info);
-
       const urlOpencagedataTemp = `https://api.opencagedata.com/geocode/v1/json?key=${keyAccessOpencagedata}&q=${info.searchNameCity}&language=${info.currentLang.toLowerCase()}&pretty=1`;
       getCityInfo(urlOpencagedataTemp);
 
@@ -61,9 +58,6 @@ export function getCityWeather(e) {
     info.searchNameCity = inputNameTownTemp.value;
     infoUpdate.flag = false;
 
-    // console.log('getCityWeather');
-    // console.log(info);
-
     const urlOpencagedataTemp = `https://api.opencagedata.com/geocode/v1/json?key=${keyAccessOpencagedata}&q=${encodeURIComponent(info.searchNameCity)}&language=${info.currentLang.toLowerCase}&pretty=1`;
     getCityInfo(urlOpencagedataTemp, 'cityNameLat');
 
@@ -93,12 +87,12 @@ export function changeTypeTemperature(e) {
   const btnTempF = document.getElementById('btnTempF');
   const btnTempC = document.getElementById('btnTempC');
   const currTemperature = document.getElementById('currTemperature');
+  const feelLikeTemp = document.getElementById('feelLikeTemp');
   const nextTemperature1 = document.getElementById('nextTemperature1');
   const nextTemperature2 = document.getElementById('nextTemperature2');
   const nextTemperature3 = document.getElementById('nextTemperature3');
 
   const idCurr = e.target.id;
-  // const idParent = e.target.parentElement.id;
 
   const btnTypeTemperatureDetect = (idCurr === 'btnTempF') || (idCurr === 'btnTempC');
 
@@ -110,6 +104,7 @@ export function changeTypeTemperature(e) {
 
     if (idCurr === 'btnTempF') {
       currTemperature.innerHTML = `${info.farenheitTemp}&deg;`;
+      feelLikeTemp.innerHTML = `${info.farenheitFeelLikeTemp}&deg;`;
       nextTemperature1.innerHTML = `${info.farenheitNextTemp1}&deg;`;
       nextTemperature2.innerHTML = `${info.farenheitNextTemp2}&deg;`;
       nextTemperature3.innerHTML = `${info.farenheitNextTemp3}&deg;`;
@@ -117,14 +112,13 @@ export function changeTypeTemperature(e) {
     }
     if (idCurr === 'btnTempC') {
       currTemperature.innerHTML = `${info.celciustTemp}&deg;`;
+      feelLikeTemp.innerHTML = `${info.celciusFeelLikeTemp}&deg;`;
       nextTemperature1.innerHTML = `${info.celciusNextTemp1}&deg;`;
       nextTemperature2.innerHTML = `${info.celciusNextTemp2}&deg;`;
       nextTemperature3.innerHTML = `${info.celciusNextTemp3}&deg;`;
       appStateService.setCurrentTypeTemp('C');
     }
 
-
-    location.reload();
   }
 
 }

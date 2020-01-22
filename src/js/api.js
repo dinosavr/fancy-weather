@@ -134,7 +134,7 @@ export function renderDataWeather(data) {
   if (info.currentTypeTemp === 'C') info.temp = info.celciustTemp;
   else info.temp = info.farenheitTemp;
 
-  info.farenheitFeelLikeTemp = data.list[0].main.feels_like;
+  info.farenheitFeelLikeTemp = Math.round(data.list[0].main.feels_like);
   info.celciusFeelLikeTemp = farenheitToCelcius(data.list[0].main.feels_like);
   if (info.currentTypeTemp === 'C') info.feelLikeTemp = info.celciusFeelLikeTemp;
   else info.feelLikeTemp = info.farenheitFeelLikeTemp;

@@ -3,7 +3,8 @@ import '../css/owfont-regular.css';
 import { info, urlIpInfo, infoUpdate, keyAccessOpencagedata} from './variables';
 import { getUserPosition, getLinkToImage, getVoice, getCityInfo} from './api';
 import { timeReload, initDefaultValue, appStateService} from './utils';
-import { getCityWeather, reloadBackgroundImage, changeTypeTemperature, changeLanguage, checkFlagName} from './actions';
+import { checkFlagName} from './actions';
+import initListener from './listeners';
 
 
 function init() {
@@ -22,7 +23,7 @@ function init() {
       checkFlagName();
 
       const keyWordsQuery = `${info.season},${info.timeOfDay},${info.weatherMain},${info.weatherMain}`;
-      getLinkToImage(keyWordsQuery);
+      // getLinkToImage(keyWordsQuery);
 
     })
 
@@ -32,16 +33,5 @@ function init() {
 document.addEventListener('DOMContentLoaded', () => {
   init();
   timeReload();
-});
-
-document.addEventListener('click', (e) => {
-  getCityWeather(e);
-  reloadBackgroundImage(e);
-  changeTypeTemperature(e);
-  changeLanguage(e);
-  getVoice(e);
-});
-
-document.addEventListener('keydown', (e) => {
-  getCityWeather(e);
+  initListener();
 });
