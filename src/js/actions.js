@@ -50,12 +50,13 @@ export function getCityWeather(e) {
   const idCurr = e.target.id;
   const idParent = e.target.parentElement.id;
 
+  const btnTypeLangDetect = (idCurr === 'btnLangEn') || (idCurr === 'btnLangRu') || (idCurr === 'btnLangBe');
   const btnSendCityNameDetect = (idCurr === 'btnSendTownName') || (idParent === 'btnSendTownName');
   const inputEnterDetect = (e.key === "Enter") && (idCurr === 'inputNameTown');
 
-  if (btnSendCityNameDetect || inputEnterDetect) {
+  if (btnSendCityNameDetect || inputEnterDetect || btnTypeLangDetect) {
 
-    info.searchNameCity = inputNameTownTemp.value;
+    info.searchNameCity = inputNameTownTemp.value || info.searchNameCity;
     infoUpdate.flag = false;
 
     const urlOpencagedataTemp = `https://api.opencagedata.com/geocode/v1/json?key=${keyAccessOpencagedata}&q=${encodeURIComponent(info.searchNameCity)}&language=${info.currentLang.toLowerCase}&pretty=1`;
@@ -128,7 +129,6 @@ function setLanguageValue(lang) {
 
   appStateService.setCurrentLang(lang.toUpperCase());
   // eslint-disable-next-line no-restricted-globals
-  location.reload();
 }
 
 export function changeLanguage(e) {
@@ -138,23 +138,26 @@ export function changeLanguage(e) {
   const btnLangBe = document.getElementById('btnLangBe');
 
   const idCurr = e.target.id;
-  // const idParent = e.target.parentElement.id;
 
-  const btnTypeTemperatureDetect = (idCurr === 'btnLangEn') || (idCurr === 'btnLangRu') || (idCurr === 'btnLangBe');
+  const btnTypeLangDetect = (idCurr === 'btnLangEn') || (idCurr === 'btnLangRu') || (idCurr === 'btnLangBe');
 
-  if (btnTypeTemperatureDetect) {
+  if (btnTypeLangDetect) {
     btnLangEn.classList.remove('active');
     btnLangRu.classList.remove('active');
     btnLangBe.classList.remove('active');
     e.target.classList.add('active');
 
 
-    if (idCurr === 'btnLangEn') info.currentLang = 'EN';
     if (idCurr === 'btnLangRu') info.currentLang = 'RU';
     if (idCurr === 'btnLangBe') info.currentLang = 'BE';
 
-// eslint-disable-next-line no-restricted-globals
+    if (idCurr === 'btnLangEn') {
+      info.currentLang = 'EN';
+    }
+
+    // eslint-disable-next-line no-restricted-globals
     setLanguageValue(info.currentLang);
+    getCityWeather(e);
   }
 
 

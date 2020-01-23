@@ -23,7 +23,7 @@ function init() {
       checkFlagName();
 
       const keyWordsQuery = `${info.season},${info.timeOfDay},${info.weatherMain},${info.weatherMain}`;
-      // getLinkToImage(keyWordsQuery);
+      getLinkToImage(keyWordsQuery);
 
     })
 

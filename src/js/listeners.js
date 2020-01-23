@@ -4,7 +4,7 @@ import { getCityWeather, reloadBackgroundImage, changeTypeTemperature, changeLan
 export default function initListener() {
   document.addEventListener('click', (e) => {
     getCityWeather(e);
-    // reloadBackgroundImage(e);
+    reloadBackgroundImage(e);
     changeTypeTemperature(e);
     changeLanguage(e);
     getVoice(e);
