@@ -1,14 +1,6 @@
 import { convertDMS } from './utils';
 import { wordsLang } from './variables';
 
-/* function createNode(element) {
-    return document.createElement(element);
-}
-
-function append(parent, el) {
-    return parent.appendChild(el);
-} */
-
 function clearBody() {
   const myNode = document.getElementById('body');
   while (myNode.firstChild) {
@@ -32,7 +24,6 @@ function createSearchBlock(parent, info) {
   const inputNameTown = document.createElement('input');
   inputNameTown.id = 'inputNameTown';
   inputNameTown.type = 'text';
-  // inputNameTown.setAttribute('value', info.searchNameCity);
   inputNameTown.setAttribute('placeholder', wordsLang[info.currentLang].placeholder);
   inputNameTown.className = 'inputNameTown';
   searchBlock.appendChild(inputNameTown);
@@ -195,7 +186,6 @@ function createNextThreeDays(parent, info) {
   createNextDay(weatherNextThreeDays, info.nextTemp1, info.weatherCodeIcon1, info.nextDay1);
   createNextDay(weatherNextThreeDays, info.nextTemp2, info.weatherCodeIcon2, info.nextDay2);
   createNextDay(weatherNextThreeDays, info.nextTemp3, info.weatherCodeIcon3, info.nextDay3);
-
 }
 
 function createWeatherBlocks(parent, info) {
@@ -239,21 +229,21 @@ function createWrapper(parent) {
 
 }
 
-  function createErrorBlock(parent) {
+function createErrorBlock(parent) {
 
-   const outputError = document.createElement('div');
-   outputError.id = 'outputError';
-   outputError.className = 'outputError';
-   outputError.innerText = '';
-   document.getElementById(parent).appendChild(outputError);
+  const outputError = document.createElement('div');
+  outputError.id = 'outputError';
+  outputError.className = 'outputError';
+  outputError.innerText = '';
+  document.getElementById(parent).appendChild(outputError);
 
 
-   const hintBlock = document.createElement('div');
-   hintBlock.id = 'hintBlock';
-   hintBlock.className = 'hint';
-   hintBlock.innerText = '';
-   document.getElementById(parent).appendChild(outputError);
- }
+  const hintBlock = document.createElement('div');
+  hintBlock.id = 'hintBlock';
+  hintBlock.className = 'hint';
+  hintBlock.innerText = '';
+  document.getElementById(parent).appendChild(outputError);
+}
 
 export function showData(info) {
   clearBody();

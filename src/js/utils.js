@@ -30,8 +30,6 @@ export function initDefaultValue() {
   info.currentLang = appStateService.getCurrentLang();
   if (appStateService.getCurrentLang() == null) appStateService.setCurrentLang('EN');
 
-  // if(info.currentLang == null) info.currentLang = 'EN';
-
   info.currentTypeTemp = appStateService.getCurrentTypeTemp();
   if (appStateService.getCurrentTypeTemp() == null) appStateService.setCurrentTypeTemp('C');
 
@@ -133,16 +131,6 @@ export function milesPerHourToMetersPerSecond(milesPerHour) {
 }
 
 export function timeConverter(unixTimeStamp) {
-  /* const a = new Date(UNIX_timestamp * 1000);
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const year = a.getFullYear();
-  const month = months[a.getMonth()];
-  const date = a.getDate();
-  const hour = a.getHours();
-  const min = a.getMinutes();
-  const sec = a.getSeconds();
-  const time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-  return time; */
 
   const date = new Date(unixTimeStamp * 1000);
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -162,10 +150,9 @@ export function timeConverter(unixTimeStamp) {
 }
 
 export function timeReload() {
-
   setInterval(() => {
     const date = new Date();
-    const n = date.toLocaleDateString("en-EN", optionsDateToday);;
+    const n = date.toLocaleDateString(info.currLangQuery, optionsDateToday);;
     document.getElementById('dateTodayTime').innerText = n;
   }, 60000);
 }

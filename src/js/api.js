@@ -1,5 +1,5 @@
-import { info, infoUpdate, keyAccessUnsplash, keyAccessMapbox, isoCountries, optionsDateToday, optionsDateThreeDays, outputError, WeatherConditionCodes } from './variables';
-import { farenheitToCelcius, milesPerHourToMetersPerSecond, getSeason, getTimesOfDay, appStateService } from './utils';
+import { info, infoUpdate, keyAccessUnsplash, keyAccessMapbox, isoCountries, optionsDateToday, optionsDateThreeDays, outputError, WeatherConditionCodes, weekDayRuToBy } from './variables';
+import { farenheitToCelcius, milesPerHourToMetersPerSecond, getSeason, getTimesOfDay, appStateService} from './utils';
 
 
 info.currentLang = appStateService.getCurrentLang();
@@ -171,6 +171,7 @@ export function renderDataWeather(data) {
   info.nextDay1 = tomorrow.toLocaleDateString(info.currLangQuery, optionsDateThreeDays);
   info.nextDay2 = dayAfterTomorrow.toLocaleDateString(info.currLangQuery, optionsDateThreeDays);
   info.nextDay3 = afterTheDayAfterTomorrow.toLocaleDateString(info.currLangQuery, optionsDateThreeDays);
+
   return info;
 }
 
@@ -229,6 +230,12 @@ export function getCityInfo(url, getValue) {
         info.nextDay1 = tomorrow.toLocaleDateString(currLangQuery, optionsDateThreeDays);
         info.nextDay2 = dayAfterTomorrow.toLocaleDateString(currLangQuery, optionsDateThreeDays);
         info.nextDay3 = afterTheDayAfterTomorrow.toLocaleDateString(currLangQuery, optionsDateThreeDays);
+
+        if(info.currentLang === 'BE') {
+          info.nextDay1 = weekDayRuToBy.get(info.nextDay1);
+          info.nextDay2 = weekDayRuToBy.get(info.nextDay2);
+          info.nextDay3 = weekDayRuToBy.get(info.nextDay3);
+          }
 
         info.season = getSeason(nd.getMonth());
         info.timeOfDay = getTimesOfDay(nd.getHours());

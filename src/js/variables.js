@@ -81,7 +81,14 @@ export const wordsLang = {
 
 }
 
-
+export const weekDayRuToBy = new Map();
+weekDayRuToBy.set('понедельник', 'панядзелак');
+weekDayRuToBy.set('вторник', 'аўторак');
+weekDayRuToBy.set('среда', 'серада');
+weekDayRuToBy.set('четверг', 'чацвер');
+weekDayRuToBy.set('пятница', 'пятніца');
+weekDayRuToBy.set('суббота', 'субота');
+weekDayRuToBy.set('воскресенье', 'ўваскрасенне');
 
 export const WeatherConditionCodes = {
   '200': {
